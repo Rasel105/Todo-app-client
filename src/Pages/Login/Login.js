@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init'
 import Loading from '../Shared/Loading';
 
@@ -9,6 +9,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
     const [
         signInWithEmailAndPassword,
         user,
@@ -16,6 +17,7 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const from = location.state?.from?.pathname || "/";
 
     if (loading) {
         return <Loading />
@@ -28,9 +30,10 @@ const Login = () => {
     const handleLogin = () => {
         signInWithEmailAndPassword(email, password)
     }
+
     if (user) {
-        navigate("/")
-    }
+        navigate(from, { replace: true });
+   }
 
     return (
         <div class="hero min-h-screen w-3/5 mx-auto">
