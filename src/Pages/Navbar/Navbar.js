@@ -5,7 +5,7 @@ const Navbar = () => {
     return (
         <div class="navbar bg-accent">
             <div class="flex-1">
-                <Link to="/" class="btn btn-ghost normal-case text-xl">Todo App</Link>
+                <Link to="/" class="btn btn-ghost normal-case text-xl text-white">Todo App</Link>
             </div>
             <div class="flex-none">
                 <ul class="menu menu-horizontal p-0">

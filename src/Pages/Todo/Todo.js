@@ -1,10 +1,22 @@
 import React from 'react';
+import { useQuery } from 'react-query';
 import InputBox from './InputBox';
+import TodoList from './TodoList';
 
 const Todo = () => {
+
+    const url = `http://localhost:8000/todolist`
+    const { data: toDoLists, isLoading, refetch } = useQuery("data", () => fetch(url).then(res => res.json()));
+
     return (
         <div>
-            <InputBox></InputBox>
+            <InputBox
+                refetch={refetch}
+            ></InputBox>
+            <TodoList
+                toDoLists={toDoLists}
+                isLoading={isLoading}
+            ></TodoList>
         </div>
     );
 };
