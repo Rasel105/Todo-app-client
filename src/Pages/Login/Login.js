@@ -1,11 +1,37 @@
-import React, { useRef } from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init'
+import Loading from '../Shared/Loading';
 
 
 const Login = () => {
-  
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+
+    if (loading) {
+        return <Loading />
+    }
+    let errorElement;
+    if (error) {
+        errorElement = <p className='text-error'>Error: {error?.message}</p>
+    }
+
+    const handleLogin = () => {
+        signInWithEmailAndPassword(email, password)
+    }
+    if (user) {
+        navigate("/")
+    }
+
     return (
         <div class="hero min-h-screen w-3/5 mx-auto">
             <div class="hero-content flex-col lg:flex-row-reverse">
@@ -15,17 +41,18 @@ const Login = () => {
                             <label class="label">
                                 <span class="label-text">Email</span>
                             </label>
-                            <input type="text" placeholder="Email" class="input input-bordered" />
+                            <input onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Email" class="input input-bordered" />
                         </div>
                         <div class="form-control">
                             <label class="label">
                                 <span class="label-text">Password</span>
                             </label>
-                            <input type="text" placeholder="Password" class="input input-bordered" />
+                            <input onChange={(e) => setPassword(e.target.value)} type="text" placeholder="Password" class="input input-bordered" />
                             <p className='my-3 text-primary' ><Link to="/signup">Don't have an account? Singup</Link></p>
+                            {errorElement}
                         </div>
                         <div class="form-control">
-                            <button class="btn btn-accent text-white">Login</button>
+                            <button onClick={handleLogin} class="btn btn-accent text-white">Login</button>
                         </div>
                     </div>
                 </div>
