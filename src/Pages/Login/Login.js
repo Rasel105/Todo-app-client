@@ -3,7 +3,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init'
 import Loading from '../Shared/Loading';
-
+import Fade from 'react-reveal/Fade';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -36,6 +36,7 @@ const Login = () => {
    }
 
     return (
+        <Fade right>
         <div class="hero min-h-screen w-3/5 mx-auto">
             <div class="hero-content flex-col lg:flex-row-reverse">
                 <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -65,6 +66,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
+        </Fade>
     );
 };
 

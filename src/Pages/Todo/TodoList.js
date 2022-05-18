@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { toast } from 'react-toastify';
 import Loading from '../Shared/Loading';
+import Flip from 'react-reveal/Flip';
 
 const TodoList = ({ toDoLists, isLoading, refetch }) => {
     const labelRef = useRef();
@@ -49,17 +50,19 @@ const TodoList = ({ toDoLists, isLoading, refetch }) => {
                     <tbody>
                         {
                             toDoLists.map((todo, index) =>
-                                <tr key={todo._id}>
-                                    <th>{index + 1}</th>
-                                    <td>{todo.todoName}</td>
-                                    <td>{todo.toDoDescription}</td>
-                                    <td><button
-                                        onClick={() => handleDelete(todo._id)}
-                                        class="btn btn-sm btn-error text-white">Delete</button>
-                                    </td>
-                                    <td><button onClick={handleClick} class="btn btn-sm btn-accent text-white">Complete</button></td>
-                                </tr>)
-                        }
+                                <Flip bottom>
+                                    <tr key={todo._id}>
+                                        <th>{index + 1}</th>
+                                        <td>{todo.todoName}</td>
+                                        <td>{todo.toDoDescription}</td>
+                                        <td><button
+                                            onClick={() => handleDelete(todo._id)}
+                                            class="btn btn-sm btn-error text-white">Delete</button>
+                                        </td>
+                                        <td><button onClick={handleClick} class="btn btn-sm btn-accent text-white">Complete</button></td>
+                                    </tr>
+                                </Flip>
+                            )}
                     </tbody>
                 </table>
             </div>
