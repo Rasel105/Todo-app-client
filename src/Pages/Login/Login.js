@@ -5,6 +5,7 @@ import auth from '../../firebase.init'
 import Loading from '../Shared/Loading';
 import Fade from 'react-reveal/Fade';
 import SocialLogin from '../Shared/SocialLogin';
+import login from '../../assets/login1.jpg'
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -20,9 +21,9 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || "/";
 
-    // if (loading) {
-    //     return <Loading />
-    // }
+    if (loading) {
+        return <Loading />
+    }
     let errorElement;
     if (error) {
         errorElement = <p className='text-error'>Error: {error?.message}</p>
@@ -65,7 +66,7 @@ const Login = () => {
                     </div>
                     <div class="text-center lg:text-left">
                         <h1 class="text-3xl font-bold ">Login now!</h1>
-                        <p class="py-6">Login the Todo App and make your todo</p>
+                        <img className='w-4/5 mx-auto' src={login} alt="" />
                     </div>
                 </div>
             </div>

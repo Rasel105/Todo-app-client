@@ -5,6 +5,7 @@ import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import Fade from 'react-reveal/Fade';
 import SocialLogin from '../Shared/SocialLogin';
+import signup from '../../assets/signup.jpg'
 
 const SignUp = () => {
 
@@ -42,7 +43,7 @@ const SignUp = () => {
         <Fade left>
             <div class="hero min-h-screen w-3/5 mx-auto">
                 <div class="hero-content flex-col lg:flex-row-reverse">
-                    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mt-10">
                         <div class="card-body">
                             <div class="form-control">
                                 <label class="label">
@@ -66,8 +67,8 @@ const SignUp = () => {
                         </div>
                     </div>
                     <div class="text-center lg:text-left">
-                        <h1 class="text-2xl font-bold ">Signup now!</h1>
-                        <p class="py-6">Signup the Todo App and make your todo</p>
+                        <h1 class="text-2xl font-bold  mb-4">Signup now!</h1>
+                        <img className='rounded-3xl' src={signup} alt="" />
                     </div>
                 </div>
             </div>
