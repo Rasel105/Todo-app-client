@@ -1,11 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import TodoUI from './Pages/Todo/TodoUI';
+import Navbar from './Pages/Navbar/Navbar';
+import Login from './Pages/Login/Login';
 
 function App() {
   return (
-    <div>
-      <h2 className='text-red-600'>hello Bangladesh</h2>
-      <button class="btn">Button</button>
+    <div className=''>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<TodoUI />}></Route>
+        <Route path='/login' element={<Login />}></Route>
+      </Routes>
     </div>
   );
 }
