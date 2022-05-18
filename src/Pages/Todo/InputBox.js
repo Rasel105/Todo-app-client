@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
+import { toast } from 'react-toastify';
 
-const InputBox = ({refetch}) => {
+const InputBox = ({ refetch }) => {
     const name = useRef();
     const description = useRef();
     const handleSubmit = (e) => {
@@ -20,6 +21,7 @@ const InputBox = ({refetch}) => {
                 console.log('Success:', data);
                 refetch()
                 e.target.reset();
+                toast.success(`${todoName} Added`)
             })
     }
 
@@ -28,8 +30,8 @@ const InputBox = ({refetch}) => {
             <div class="card-body">
                 <h2 class="mb-2 text-2xl text-center">Todo App!</h2>
                 <form onSubmit={handleSubmit}>
-                    <input ref={name} type="text" placeholder="Todo name" class="input input-bordered input-accent w-full max-w-xs mb-3" />
-                    <input ref={description} type="text" placeholder="Description" class="input input-bordered input-accent w-full max-w-xs " />
+                    <input ref={name} type="text" placeholder="Todo name" required class="input input-bordered input-accent w-full max-w-xs mb-3" />
+                    <input ref={description} type="text" placeholder="Description" required class="input input-bordered input-accent w-full max-w-xs " />
                     <div class="card-actions justify-end mt-3">
                         <button class="btn btn-accent text-white">ADD</button>
                     </div>
