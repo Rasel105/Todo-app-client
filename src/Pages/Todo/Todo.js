@@ -4,7 +4,6 @@ import InputBox from './InputBox';
 import TodoList from './TodoList';
 
 const Todo = () => {
-
     const url = `http://localhost:8000/todolist`
     const { data: toDoLists, isLoading, refetch } = useQuery("data", () => fetch(url).then(res => res.json()));
 

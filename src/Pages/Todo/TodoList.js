@@ -1,7 +1,9 @@
+import { useRef } from 'react';
 import { toast } from 'react-toastify';
 import Loading from '../Shared/Loading';
 
 const TodoList = ({ toDoLists, isLoading, refetch }) => {
+    const labelRef = useRef();
 
     if (isLoading) {
         return <Loading />
@@ -21,6 +23,15 @@ const TodoList = ({ toDoLists, isLoading, refetch }) => {
                 })
         }
     }
+
+    const handleClick = (event) => {
+        if (event.target.style.textDecoration) {
+            event.target.style.removeProperty('text-decoration');
+        } else {
+            event.target.style.setProperty('text-decoration', 'line-through');
+        }
+    }
+
 
     return (
         <div className='w-2/4 mx-auto mt-4'>
@@ -44,8 +55,9 @@ const TodoList = ({ toDoLists, isLoading, refetch }) => {
                                     <td>{todo.toDoDescription}</td>
                                     <td><button
                                         onClick={() => handleDelete(todo._id)}
-                                        class="btn btn-sm btn-error text-white">Delete</button></td>
-                                    <td><button class="btn btn-sm btn-accent text-white">Complete</button></td>
+                                        class="btn btn-sm btn-error text-white">Delete</button>
+                                    </td>
+                                    <td><button onClick={handleClick} class="btn btn-sm btn-accent text-white">Complete</button></td>
                                 </tr>)
                         }
                     </tbody>
