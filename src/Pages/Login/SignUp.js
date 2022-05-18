@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import Fade from 'react-reveal/Fade';
+import SocialLogin from '../Shared/SocialLogin';
 
 const SignUp = () => {
 
@@ -34,6 +35,8 @@ const SignUp = () => {
         navigate("/")
     }
 
+
+
     return (
 
         <Fade left>
@@ -51,13 +54,15 @@ const SignUp = () => {
                                 <label class="label">
                                     <span class="label-text">Password</span>
                                 </label>
-                                <input onChange={(e) => setPassword(e.target.value)} type="text" placeholder="Password" class="input input-bordered" />
+                                <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" class="input input-bordered" />
                                 <p className='my-3 text-primary'><Link to="/login">Have an account? Login</Link></p>
                                 {errorElement}
                             </div>
                             <div class="form-control">
                                 <button onClick={handleSignUp} class="btn btn-accent text-white">Signup</button>
                             </div>
+                            <div class="divider">OR</div>
+                            <SocialLogin></SocialLogin>
                         </div>
                     </div>
                     <div class="text-center lg:text-left">

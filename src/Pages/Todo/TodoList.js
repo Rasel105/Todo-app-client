@@ -50,8 +50,8 @@ const TodoList = ({ toDoLists, isLoading, refetch }) => {
                     <tbody>
                         {
                             toDoLists.map((todo, index) =>
-                                <Flip bottom>
-                                    <tr key={todo._id}>
+                                <Flip bottom key={todo._id}>
+                                    <tr >
                                         <th>{index + 1}</th>
                                         <td>{todo.todoName}</td>
                                         <td>{todo.toDoDescription}</td>
