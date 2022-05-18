@@ -16,6 +16,7 @@ const Todo = () => {
             <TodoList
                 toDoLists={toDoLists}
                 isLoading={isLoading}
+                refetch={refetch}
             ></TodoList>
         </div>
     );

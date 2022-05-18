@@ -1,6 +1,7 @@
+import { toast } from 'react-toastify';
 import Loading from '../Shared/Loading';
 
-const TodoList = ({ toDoLists, isLoading }) => {
+const TodoList = ({ toDoLists, isLoading, refetch }) => {
 
     if (isLoading) {
         return <Loading />
@@ -11,7 +12,11 @@ const TodoList = ({ toDoLists, isLoading }) => {
             method: 'DELETE',
         })
             .then(res => res.json())
-            .then(res => console.log(res))
+            .then(data => {
+                console.log(data)
+                toast.success(`Data deleted`)
+                refetch();
+            })
     }
 
     return (
