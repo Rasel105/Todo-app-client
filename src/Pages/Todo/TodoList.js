@@ -10,7 +10,7 @@ const TodoList = ({ toDoLists, isLoading, refetch }) => {
     const handleDelete = (id) => {
         const deleteData = window.confirm("Are you want delete the item?");
         if (deleteData) {
-            fetch(`http://localhost:8000/todolist/${id}`, {
+            fetch(`https://nameless-hollows-03971.herokuapp.com/todolist/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())

@@ -10,7 +10,7 @@ const InputBox = ({ refetch }) => {
         const todoName = name.current.value;
         const toDoDescription = description.current.value;
 
-        fetch('http://localhost:8000/todolist', {
+        fetch('https://nameless-hollows-03971.herokuapp.com/todolist', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
