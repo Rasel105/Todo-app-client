@@ -1,11 +1,8 @@
-import { useRef } from 'react';
 import { toast } from 'react-toastify';
 import Loading from '../Shared/Loading';
 import Flip from 'react-reveal/Flip';
 
 const TodoList = ({ toDoLists, isLoading, refetch }) => {
-    const labelRef = useRef();
-
     if (isLoading) {
         return <Loading />
     }
@@ -25,12 +22,9 @@ const TodoList = ({ toDoLists, isLoading, refetch }) => {
         }
     }
 
-    const handleClick = (event) => {
-        if (event.target.style.textDecoration) {
-            event.target.style.removeProperty('text-decoration');
-        } else {
-            event.target.style.setProperty('text-decoration', 'line-through');
-        }
+    const handleClick = (id) => {
+        document.getElementById(`${id}`).style.textDecoration = "line-through";
+        toast.success("Completed")
     }
 
 
@@ -50,16 +44,20 @@ const TodoList = ({ toDoLists, isLoading, refetch }) => {
                     <tbody>
                         {
                             toDoLists.map((todo, index) =>
-                                <Flip bottom key={todo._id}>
-                                    <tr >
-                                        <th>{index + 1}</th>
+                                <Flip bottom>
+                                    <tr id={todo._id}>
+                                        <div className='absolute'><th className='z-20'>{index + 1}</th></div>
                                         <td>{todo.todoName}</td>
                                         <td>{todo.toDoDescription}</td>
-                                        <td><button
-                                            onClick={() => handleDelete(todo._id)}
-                                            class="btn btn-sm btn-error text-white">Delete</button>
-                                        </td>
-                                        <td><button onClick={handleClick} class="btn btn-sm btn-accent text-white">Complete</button></td>
+                                        <div className='absolute'>
+                                            <td><button
+                                                onClick={() => handleDelete(todo._id)}
+                                                class="btn btn-sm btn-error text-white">Delete</button>
+                                            </td>
+                                            <td className='relative z-20'>
+                                                <button onClick={() => handleClick(todo._id)} class="btn btn-sm btn-accent text-white">Complete</button>
+                                            </td>
+                                        </div>
                                     </tr>
                                 </Flip>
                             )}

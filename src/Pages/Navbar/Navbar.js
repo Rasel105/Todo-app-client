@@ -28,7 +28,7 @@ const Navbar = () => {
             <div class="flex-none">
                 <ul class="menu menu-horizontal p-0">
                     <li className='text-white font-bold'><Link to="/">Home</Link></li>
-                    {user ? <li className='mt-2'><button onClick={logout} className='btn btn-sm text-white p-1'>SignOut</button></li> : <li className='font-bold text-white'><Link to="/login">Login</Link></li>}
+                    {user ? <li className='mt-2'><button onClick={logout} className='btn btn-sm btn-secondary px-2 text-white p-1'>SignOut</button></li> : <li className='font-bold text-white'><Link to="/login">Login</Link></li>}
                 </ul>
             </div>
         </div>
