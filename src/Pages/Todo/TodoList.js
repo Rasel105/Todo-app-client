@@ -29,7 +29,7 @@ const TodoList = ({ toDoLists, isLoading, refetch }) => {
 
 
     return (
-        <div className='w-2/4 mx-auto mt-4'>
+        <div className='w-2/4 min-h-fit mx-auto mt-4'>
             <div class="overflow-x-auto">
                 <table class="table w-full">
                     <thead>
